@@ -1,0 +1,20 @@
+{
+  "name": "razorpay-demo-backend",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Node.js (Express) backend for a Razorpay Test Mode demo",
+  "type": "module",
+  "main": "server.js",
+  "engines": {
+    "node": ">=20.12"
+  },
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js"
+  },
+  "dependencies": {
+    "express": "^5.1.0",
+    "pg": "^8.23.1",
+    "razorpay": "^2.9.6"
+  }
+}
