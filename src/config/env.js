@@ -32,11 +32,11 @@ export const config = {
   // Public address of this service, used to build the hosted payment page link (payment_url).
   publicBaseUrl: (process.env.PUBLIC_BASE_URL || `http://localhost:${Number(process.env.PORT) || 8000}`).replace(/\/+$/, ''),
 
-  // PostgreSQL (DB_CONNECTION=pgsql). Without it orders/payments are kept in data/*.json.
+  // MySQL (DB_CONNECTION=mysql). Without it orders/payments are kept in data/*.json.
   db: {
     connection: (process.env.DB_CONNECTION ?? '').trim().toLowerCase(),
     host: process.env.DB_HOST || 'localhost',
-    port: Number(process.env.DB_PORT) || 5432,
+    port: Number(process.env.DB_PORT) || 3306,
     database: process.env.DB_DATABASE ?? '',
     user: process.env.DB_USERNAME ?? '',
     password: process.env.DB_PASSWORD ?? '',
@@ -51,7 +51,7 @@ export const razorpayConfigured = () =>
   config.razorpay.keyId !== '' && config.razorpay.keySecret !== '' && !config.razorpay.keyId.startsWith('YOUR_')
 
 export const dbConfigured = () =>
-  ['pgsql', 'postgres', 'postgresql'].includes(config.db.connection) && config.db.database !== ''
+  ['mysql', 'mariadb'].includes(config.db.connection) && config.db.database !== ''
 
 export const webhookConfigured = () =>
   config.razorpay.webhookSecret !== '' && !config.razorpay.webhookSecret.startsWith('YOUR_')
